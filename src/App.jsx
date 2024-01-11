@@ -1,3 +1,4 @@
+import { Footer } from "./views/Footer/Footer";
 import { Header } from "./views/Header/Header";
 
 const App = () => (
@@ -6,7 +7,7 @@ const App = () => (
     <main>
       <p>Текст</p>
     </main>
-    <footer>Тескт2</footer>
+    <Footer />
   </>
 );
 
