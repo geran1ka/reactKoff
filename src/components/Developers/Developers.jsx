@@ -1,20 +1,22 @@
-export const Developer = () => (
-  <ul className="footer__developer-list">
+import s from "./Developers.module.scss";
+
+export const Developers = () => (
+  <ul className={s.developers}>
     <li className="footer__developer-item">
-      Desinger:
+      Desinger:&nbsp;
       <a
         href="https://t.me/Mrshmallowww"
-        className="footer__developer-link"
+        className={s.link}
         target="_blank"
         rel="noreferrer">
         Anastasia Ilina
       </a>
     </li>
     <li className="footer__developer-item">
-      Developer:
+      Developer:&nbsp;
       <a
         href="https://t.me/Roman_khor"
-        className="footer__developer-link"
+        className={s.link}
         target="_blank"
         rel="noreferrer">
         Roman Khoruzhy

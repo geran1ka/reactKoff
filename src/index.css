@@ -34,9 +34,6 @@ html {
 }
 
 body {
-  position: relative;
-  min-width: 320px;
-  min-height: 100vh;
   font-family: "Open Sans";
   font-size: 12px;
   font-weight: 400;
@@ -45,11 +42,27 @@ body {
   background-color: #fff;
 }
 
+#root {
+  position: relative;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
 img,
 svg {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+svg {
+  max-height: 100%;
 }
 
 button {
