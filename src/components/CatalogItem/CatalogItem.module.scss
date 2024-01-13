@@ -1,0 +1,36 @@
+.link {
+  display: block;
+  padding: 8px 14px 10px 14px;
+  border-radius: 32px;
+  color: #969eae;
+  background-color: #eeeff2;
+  outline: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+
+  transition:
+    color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    border-color: #780096;
+    color: #780096;
+  }
+
+  &:active,
+  &_active {
+    color: #fff;
+    background-color: #780096;
+
+    &:hover,
+    &:focus-visible {
+      color: #fff;
+    }
+  }
+
+  &_active {
+    pointer-events: none;
+  }
+}

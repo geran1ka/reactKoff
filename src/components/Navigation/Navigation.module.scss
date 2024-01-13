@@ -17,16 +17,12 @@
     outline-color 0.3s ease-in-out,
     fill 0.3s ease-in-out;
 
-  svg {
-    fill: #fff;
-  }
-
   &:hover,
   &:active {
     color: #780096;
 
-    svg {
-      fill: #780096;
+    .svg {
+      color: #780096;
     }
   }
 
@@ -37,6 +33,33 @@
 
   @media (min-width: 580px) {
     flex-direction: row;
+  }
+}
+
+.svg {
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  stroke: #1c1c1c;
+
+  transition: color 0.3s ease-in-out;
+
+  &:hover,
+  &:active {
+    color: #780096;
+  }
+}
+
+.svgFavorite {
+  width: 16px;
+  height: 16px;
+  stroke: #1c1c1c;
+
+  transition: color 0.3s ease-in-out;
+
+  &:hover,
+  &:active {
+    color: #780096;
   }
 }
 
