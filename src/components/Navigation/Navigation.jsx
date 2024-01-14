@@ -3,7 +3,7 @@ import s from "./Navigation.module.scss";
 
 export const Navigation = () => (
   <nav className={s.navigation}>
-    <a className={s.link} href="/favorite">
+    <a className={s.link} href="/favorite" aria-label="Перейти в Избранное">
       <span className={s.text}>Избранное</span>
       <SVG iconName="favoriteIcon" className={s.svg} />
       {/* <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +18,7 @@ export const Navigation = () => (
 
       <span></span>
     </a>
-    <a className={s.link} href="/cart">
+    <a className={s.link} href="/cart" aria-label="Перейти в Корзину">
       <span className={s.text}>Корзина</span>
       <span>(5)</span>
       <SVG iconName="cartIcon" className={s.svgFavorite} />

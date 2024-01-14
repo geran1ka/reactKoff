@@ -20,7 +20,7 @@ export const CardItem = () => (
 
     <button className={s.btn}>В корзину</button>
 
-    <button className={s.favorite}>
+    <button className={s.favorite} aria-label="Добавить в избранное">
       <SVG iconName="favoriteIcon" className={s.svg} />
       {/* <svg
         width="16"
