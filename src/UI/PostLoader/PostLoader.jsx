@@ -1,4 +1,3 @@
-import React from "react";
 import style from "./PostLoader.module.css";
 import CircleLoader from "react-spinners/CircleLoader";
 
