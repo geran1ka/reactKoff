@@ -2,19 +2,20 @@ import classNames from "classnames";
 import s from "./CardItem.module.scss";
 import { SVG } from "../../UI/SVG/SVG";
 import { URL_API } from "../../const/const";
+import { Link } from "react-router-dom";
 
 export const CardItem = ({ name, images: [image], price, id }) => (
   <li>
     <article className={s.card}>
-      <a href={`/product/${id}`} className={classNames(s.link, s.linkImg)}>
+      <Link to={`/product/${id}`} className={classNames(s.link, s.linkImg)}>
         <img src={`${URL_API}${image}`} alt={name} className={s.img}></img>
-      </a>
+      </Link>
 
       <div className={s.info}>
         <h3 className={s.title}>
-          <a href={`/product/${id}`} className={s.link}>
+          <Link to={`/product/${id}`} className={s.link}>
             {name}
-          </a>
+          </Link>
         </h3>
 
         <p className={s.price}>{price.toLocaleString()}&nbsp;₽</p>
