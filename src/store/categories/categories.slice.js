@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { URL_API } from "../../const/const";
 
-export const fetchCategories = createAsyncThunk("fetch/categories", async (_, { getState }) => {
+export const fetchCategories = createAsyncThunk("fetch/fetchCategories", async (_, { getState }) => {
   const state = getState();
   const token = state.auth.accessToken;
-  console.log("token: ", token);
 
-  const response = await fetch("https://koff-api.vercel.app/api/productCategories", {
+  const response = await fetch(`${URL_API}api/productCategories`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -34,7 +34,6 @@ const categoriesSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
-        console.log("action: ", action);
         state.data = action.payload;
         state.loading = false;
         state.error = null;

@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { URL_API } from "../../const/const";
 
-export const fetchProducts = createAsyncThunk("fetch/products", async (_, { getState }) => {
+export const fetchProducts = createAsyncThunk("fetch/fetchProducts", async (_, { getState }) => {
   const state = getState();
   const token = state.auth.accessToken;
 
-  const response = await fetch("https://koff-api.vercel.app/api/products", {
+  const response = await fetch(`${URL_API}api/products`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
   if (!response.ok) {
-    console.log("response.ok: ", response.ok);
-    throw new Error("Не удалось получить список продуктов!");
+    throw new Error("Не удалось загрузить продукты!");
   }
 
   return await response.json();
@@ -35,13 +35,11 @@ const productsSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        console.log("action: ", action);
         state.data = action.payload;
         state.loading = false;
         state.error = null;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        console.log("action: ", action);
         state.loading = false;
         state.error = action.error.message;
       });
