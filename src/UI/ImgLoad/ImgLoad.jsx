@@ -7,11 +7,9 @@ export const ImgLoad = ({ src, name }) => {
   useEffect(() => {
     const image = new Image();
     image.src = src;
-    console.log("image.src: ", image.src);
     image.onload = () => {
       setLoad(false);
     };
-    console.log("load: ", loading);
   }, [src, loading]);
 
   return loading ? <PostLoader /> : <img src={src} alt={name} className={s.img}></img>;

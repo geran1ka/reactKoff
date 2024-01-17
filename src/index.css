@@ -105,24 +105,3 @@ main {
     padding-bottom: 100px;
   }
 }
-
-.error {
-  display: flex;
-  align-items: center;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  justify-items: center;
-}
-
-.loading {
-  text-align: center;
-}
-
-.loading__text {
-  font-size: 18px;
-}
-
-.error__text {
-  font-size: 25px;
-  color: red;
-}

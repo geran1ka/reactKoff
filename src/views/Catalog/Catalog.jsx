@@ -4,7 +4,8 @@ import { fetchCategories } from "../../store/categories/categories.slice";
 import { Container } from "../Container/Container";
 import s from "./Catalog.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { PostLoader } from "../../UI/PostLoader/PostLoader";
+import { Error } from "../../UI/Error/Error";
+import { Loading } from "../../UI/Loading/Loading";
 
 export const Catalog = () => {
   const dispatch = useDispatch();
@@ -14,20 +15,8 @@ export const Catalog = () => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  if (loading) {
-    return (
-      <div className="loading">
-        <p className="loading__text">Загрузка</p>
-      </div>
-    );
-  }
-  if (error) {
-    return (
-      <div className="error">
-        <p className="error__text">Ошибка: {error}</p>
-      </div>
-    );
-  }
+  if (loading) return <Loading text={"Загрузка каталог..."} />;
+  if (error) return <Error error={error} />;
 
   return (
     <nav className={s.catalog}>

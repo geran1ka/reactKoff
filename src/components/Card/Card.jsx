@@ -9,6 +9,8 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct } from "../../store/product/product.slice";
 import { URL_API } from "../../const/const";
+import { Loading } from "../../UI/Loading/Loading";
+import { Error } from "../../UI/Error/Error";
 
 export const Card = () => {
   const dispatch = useDispatch();
@@ -21,13 +23,13 @@ export const Card = () => {
     dispatch(fetchProduct(productId));
   }, [dispatch, productId]);
 
-  if (loading) return <div>Загрузка информации о товаре</div>;
-  if (error) return <div>Ошибка загрузки информации: {error}</div>;
+  if (loading) return <Loading text={"Загрузка информации о товаре"} />;
+  if (error) return <Error error={error} />;
 
   const { article, name, price, characteristics, images } = product;
 
   return (
-    product && (
+    images && (
       <section className={s.product}>
         <Container className={s.container}>
           <h2 className={s.title}>{name}</h2>
@@ -39,12 +41,11 @@ export const Card = () => {
                 thumbs={{ swiper: thumbSwiper }}
                 onSwiper={setMainSwiper}
                 spaceBetween={10}>
-                {images &&
-                  images.map((image) => (
-                    <SwiperSlide key={image} className={s.slide}>
-                      <img src={`${URL_API}${image}`} alt={name} />
-                    </SwiperSlide>
-                  ))}
+                {images.map((image) => (
+                  <SwiperSlide key={image} className={s.slide}>
+                    <img src={`${URL_API}${image}`} alt={name} />
+                  </SwiperSlide>
+                ))}
               </Swiper>
               <button className={classNames(s.arrow, s.prev)} type="button" onClick={() => mainSwiper.slidePrev()}>
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,12 +76,11 @@ export const Card = () => {
                 spaceBetween={14}
                 slidesPerView={4}
                 freeMode>
-                {images &&
-                  images.map((image) => (
-                    <SwiperSlide key={image} className={s.slide}>
-                      <img className={s.imgThumbnail} src={`${URL_API}${image}`} alt={name} />
-                    </SwiperSlide>
-                  ))}
+                {images.map((image) => (
+                  <SwiperSlide key={image} className={s.slide}>
+                    <img className={s.imgThumbnail} src={`${URL_API}${image}`} alt={name} />
+                  </SwiperSlide>
+                ))}
               </Swiper> */}
             </div>
           </div>
