@@ -9,6 +9,7 @@ import { Card } from "./components/Card/Card.jsx";
 import { Cart } from "./components/Cart/Cart.jsx";
 import { Goods } from "./views/Goods/Goods.jsx";
 import { Catalog } from "./views/Catalog/Catalog.jsx";
+import { NotFound } from "./components/NotFound/NotFound.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -83,6 +84,19 @@ const router = createBrowserRouter([
         <main>
           <Catalog />
           <Card />
+        </main>
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+      <>
+        <Header />
+        <main>
+          <Catalog />
+          <NotFound />
         </main>
         <Footer />
       </>

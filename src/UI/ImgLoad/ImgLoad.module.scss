@@ -1,0 +1,14 @@
+.img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  aspect-ratio: 7/6;
+
+  @media (min-width: 580px) {
+    aspect-ratio: 23/20;
+  }
+
+  @media (min-width: 820px) {
+    aspect-ratio: 151/125;
+  }
+}

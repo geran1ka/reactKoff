@@ -14,8 +14,20 @@ export const Goods = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loading) return <div>Загрузка списка товаров...</div>;
-  if (error) return <div>Ошибка: {error}</div>;
+  if (loading) {
+    return (
+      <div className="loading">
+        <p className="loading__text">Загрузка списка товаров...</p>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="error">
+        <p className="error__text">Ошибка: {error}</p>
+      </div>
+    );
+  }
 
   return (
     <section className={s.goods}>
