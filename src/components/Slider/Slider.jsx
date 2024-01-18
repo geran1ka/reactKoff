@@ -54,9 +54,15 @@ export const Slider = ({ data }) => {
       </div>
       <div className={s.sliderThumbnails}>
         {data.images?.length ? (
-          <Swiper onSwiper={setThumbSwiper} modules={[Thumbs]} watchSlidesProgress spaceBetween={14} slidesPerView={4}>
+          <Swiper
+            freeMode
+            onSwiper={setThumbSwiper}
+            modules={[Thumbs]}
+            watchSlidesProgress
+            spaceBetween={14}
+            slidesPerView={4}>
             {data.images.map((item, i) => (
-              <SwiperSlide key={i} className={s.slide}>
+              <SwiperSlide key={i} className={s.slideThumbnail}>
                 <img className={s.imgThumbnail} src={`${URL_API}${item}`} alt={data.name} />
               </SwiperSlide>
             ))}

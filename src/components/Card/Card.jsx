@@ -31,7 +31,7 @@ export const Card = () => {
             <p className={s.article}>арт. {data.article}</p>
 
             <div className={s.characteristics}>
-              <h3 className={s.subtitle}>Общие характеристики</h3>
+              <h3 className={s.characteristicsTitle}>Общие характеристики</h3>
 
               <table className={s.table}>
                 <tbody>
