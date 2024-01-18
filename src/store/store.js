@@ -3,6 +3,7 @@ import authReducer from "./auth/auth.slice";
 import categoriesReducer from "./categories/categories.slice";
 import productsReducer from "./products/products.slice";
 import productReducer from "./product/product.slice";
+import { apiTokenErrorMiddleware } from "./middelware";
 
 export const store = configureStore({
   reducer: {
@@ -11,4 +12,5 @@ export const store = configureStore({
     products: productsReducer,
     product: productReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiTokenErrorMiddleware),
 });

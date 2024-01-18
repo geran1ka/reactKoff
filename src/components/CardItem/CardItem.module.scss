@@ -9,9 +9,16 @@
   display: block;
   margin-bottom: 12px;
   margin: 0 auto;
+  // height: 120px;
 
   @media (min-width: 580px) {
     margin-bottom: 16px;
+    // height: 200px;
+  }
+
+  @media (min-width: 820px) {
+    margin-bottom: 16px;
+    // height: 250px;
   }
 }
 

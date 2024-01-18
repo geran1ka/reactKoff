@@ -5,6 +5,8 @@ import { CardItem } from "../../components/CardItem/CardItem";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProducts } from "../../store/products/products.slice";
+import { Loading } from "../../UI/Loading/Loading";
+import { Error } from "../../UI/Error/Error";
 
 export const Goods = () => {
   const dispatch = useDispatch();
@@ -14,20 +16,8 @@ export const Goods = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loading) {
-    return (
-      <div className="loading">
-        <p className="loading__text">Загрузка списка товаров...</p>
-      </div>
-    );
-  }
-  if (error) {
-    return (
-      <div className="error">
-        <p className="error__text">Ошибка: {error}</p>
-      </div>
-    );
-  }
+  if (loading) return <Loading text={"Загрузка списка товаров..."} />;
+  if (error) return <Error error={error} />;
 
   return (
     <section className={s.goods}>

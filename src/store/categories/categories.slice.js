@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { URL_API } from "../../const/const";
 
-export const fetchCategories = createAsyncThunk("fetch/fetchCategories", async (_, { getState }) => {
+export const fetchCategories = createAsyncThunk("fetch/fetchCategories", async (_, { getState, rejectWithValue }) => {
   const state = getState();
   const token = state.auth.accessToken;
 
@@ -12,6 +12,12 @@ export const fetchCategories = createAsyncThunk("fetch/fetchCategories", async (
   });
 
   if (!response.ok) {
+    if (response.status === 401) {
+      return rejectWithValue({
+        status: response.status,
+        error: "Не удалось получить каталог!",
+      });
+    }
     throw new Error("Не удалось получить каталог!");
   }
   return await response.json();

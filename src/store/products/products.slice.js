@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { URL_API } from "../../const/const";
 
-export const fetchProducts = createAsyncThunk("fetch/fetchProducts", async (_, { getState }) => {
+export const fetchProducts = createAsyncThunk("fetch/fetchProducts", async (_, { getState, rejectWithValue }) => {
   const state = getState();
   const token = state.auth.accessToken;
 
@@ -12,6 +12,12 @@ export const fetchProducts = createAsyncThunk("fetch/fetchProducts", async (_, {
   });
 
   if (!response.ok) {
+    if (response.status === 401) {
+      return rejectWithValue({
+        status: response.status,
+        error: "Не удалось загрузить продукты!",
+      });
+    }
     throw new Error("Не удалось загрузить продукты!");
   }
 

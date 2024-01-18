@@ -1,25 +1,31 @@
 import { URL_API } from "../../const/const";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchProduct = createAsyncThunk("fetch/fetchProduct", async (productId, { getState }) => {
+export const fetchProduct = createAsyncThunk("fetch/fetchProduct", async (productId, { getState, rejectWithValue }) => {
   const state = getState();
   const token = state.auth.accessToken;
 
-  const responce = await fetch(`${URL_API}api/products/${productId}`, {
+  const response = await fetch(`${URL_API}api/products/${productId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
-  if (!responce.ok) {
+  if (!response.ok) {
+    if (response.status === 401) {
+      return rejectWithValue({
+        status: response.status,
+        error: `Не удалось загрузить информацию о продукте с id: ${productId} `,
+      });
+    }
     throw new Error(`Не удалось загрузить информацию о продукте с id: ${productId} `);
   }
 
-  return await responce.json();
+  return await response.json();
 });
 
 const initialState = {
-  product: {},
+  data: null,
   loading: false,
   error: null,
 };
@@ -35,7 +41,7 @@ const productSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchProduct.fulfilled, (state, action) => {
-        state.product = action.payload;
+        state.data = action.payload;
         state.loading = false;
         state.error = null;
       })
