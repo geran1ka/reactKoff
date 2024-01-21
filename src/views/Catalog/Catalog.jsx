@@ -21,7 +21,14 @@ export const Catalog = () => {
   return (
     <nav className={s.catalog}>
       <Container className={s.container}>
-        <ul className={s.list}>{data && data.map((item) => <CatalogItem key={item} title={item} />)}</ul>
+        <ul className={s.list}>
+          {data &&
+            data.map((item) => (
+              <li key={item}>
+                <CatalogItem title={item} />
+              </li>
+            ))}
+        </ul>
       </Container>
     </nav>
   );

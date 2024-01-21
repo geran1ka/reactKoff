@@ -4,29 +4,29 @@ import { SVG } from "../../UI/SVG/SVG";
 import { URL_API } from "../../const/const";
 import { Link } from "react-router-dom";
 import { ImgLoad } from "../../UI/ImgLoad/ImgLoad";
+import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 
 export const CardItem = ({ name, images: [image], price, id }) => (
-  <li>
-    <article className={s.card}>
-      <Link to={`/product/${id}`} className={classNames(s.link, s.linkImg)}>
-        <ImgLoad src={`${URL_API}${image}`} name={name} />
-      </Link>
+  <article className={s.card}>
+    <Link to={`/product/${id}`} className={classNames(s.link, s.linkImg)}>
+      <ImgLoad src={`${URL_API}${image}`} name={name} />
+    </Link>
 
-      <div className={s.info}>
-        <h3 className={s.title}>
-          <Link to={`/product/${id}`} className={s.link}>
-            {name}
-          </Link>
-        </h3>
+    <div className={s.info}>
+      <h3 className={s.title}>
+        <Link to={`/product/${id}`} className={s.link}>
+          {name}
+        </Link>
+      </h3>
 
-        <p className={s.price}>{price.toLocaleString()}&nbsp;₽</p>
-      </div>
+      <p className={s.price}>{price.toLocaleString()}&nbsp;₽</p>
+    </div>
 
-      <button className={s.btn}>В корзину</button>
-
-      <button className={s.favorite} aria-label="Добавить в избранное">
-        <SVG iconName="favoriteIcon" className={s.svg} />
-        {/* <svg
+    <button className={s.btn}>В корзину</button>
+    <FavoriteButton className={[s.favorite, s.svg]} id={id} />
+    {/* <button className={s.favorite} aria-label="Добавить в избранное">
+      <SVG iconName="favoriteIcon" className={s.svg} />
+      <svg
             width="16"
             height="16"
             viewBox="0 0 16 16"
@@ -39,8 +39,7 @@ export const CardItem = ({ name, images: [image], price, id }) => (
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-          </svg> */}
-      </button>
-    </article>
-  </li>
+          </svg>
+    </button> */}
+  </article>
 );

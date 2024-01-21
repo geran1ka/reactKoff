@@ -7,6 +7,7 @@ import { fetchProduct } from "../../store/product/product.slice";
 import { Slider } from "../Slider/Slider";
 import { Loading } from "../../UI/Loading/Loading";
 import { Error } from "../../UI/Error/Error";
+import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 
 export const Card = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export const Card = () => {
 
   if (loading) return <Loading text={"Загрузка информации о товаре"} />;
   if (error) return <Error error={error} />;
+  if (!data) return <Loading text={"Подукт не найден"} />;
 
   return (
     data && (
@@ -49,7 +51,8 @@ export const Card = () => {
                 <button className={s.btn} type="button">
                   В корзину
                 </button>
-                <button className={s.like} type="button">
+                <FavoriteButton className={[s.like, s.svg]} id={data.id} />
+                {/* <button className={s.like} type="button" id={data.id}>
                   <svg
                     className={s.svg}
                     width="16"
@@ -66,7 +69,7 @@ export const Card = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
