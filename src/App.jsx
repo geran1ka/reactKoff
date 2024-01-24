@@ -6,10 +6,10 @@ import { useEffect } from "react";
 import { fetchAccessToken } from "./store/auth/auth.slice.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Card } from "./components/Card/Card.jsx";
-import { Cart } from "./components/Cart/Cart.jsx";
 import { Goods } from "./views/Goods/Goods.jsx";
 import { Catalog } from "./views/Catalog/Catalog.jsx";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
+import { Cart } from "./views/Cart/Cart.jsx";
 const router = createBrowserRouter([
   {
     path: "/",

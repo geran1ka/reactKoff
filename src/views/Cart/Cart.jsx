@@ -1,10 +1,12 @@
+import { CartForm } from "../../components/CartForm/CartForm";
+import { CartPlace } from "../../components/CartPlace/CartPlace";
 import { CartProducts } from "../../components/CartProducts/CartProducts";
 import { Container } from "../Container/Container";
-import { CartPlace } from "../../components/CartPlace/CartPlace";
-import { CartForm } from "../../components/CartForm/CartForm";
+import s from "./Cart.module.scss";
 
 export const Cart = () => {
-  console.log("1");
+  console.log("cart");
+
   return (
     <section className={s.cart}>
       <Container className={s.container}>

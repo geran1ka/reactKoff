@@ -20,13 +20,10 @@ export const Pagination = ({ pagination }) => {
 
   const prevPageNumber = currentPageNumber - 1;
   const nextPageNumber = currentPageNumber + 1;
-  console.log("nextPageNumber: ", nextPageNumber);
 
   const prevPageUrl = prevPageNumber > 0 ? createPageUrl(prevPageNumber) : "";
-  console.log("prevPageUrl: ", prevPageUrl);
 
   const nextPageUrl = nextPageNumber <= totalPages ? createPageUrl(nextPageNumber) : "";
-  console.log("nextPageUrl: ", nextPageUrl);
 
   const width = currentPage * limit;
   const paginationCurrent =
@@ -35,7 +32,9 @@ export const Pagination = ({ pagination }) => {
   return (
     <div className={s.pagination}>
       <div className={s.bar}>
-        <div className={s.barWidth} style={{ width: `calc(${width})` }}></div>
+        <div
+          className={s.barWidth}
+          style={{ width: `calc(${width < totalProducts ? width : totalProducts} / ${totalProducts} * 100%)` }}></div>
       </div>
       <div className={s.arrows}>
         <Link className={prevPageUrl ? "" : s.disabled} to={prevPageUrl}>
