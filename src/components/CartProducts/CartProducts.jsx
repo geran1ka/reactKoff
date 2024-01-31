@@ -1,21 +1,25 @@
+import { useDispatch } from "react-redux";
 import s from "./CartProducts.module.scss";
+import { URL_API } from "../../const/const";
 
-export const CartProducts = () => {
-  console.log();
+export const CartProducts = ({ products }) => {
+  console.log("products: ", products);
 
   return (
     <ul className={s.products}>
-      <li className={s.product} key={1}>
-        <img className={s.img} src="https://koff-api.vercel.app/img//1hb1kuhbs8qjnl6k.jpg" alt={`Диван`} />
-        <h3 className={s.titlePproduct}>Кресло с подлокотниками</h3>
-        <p className={s.price}>{"5000".toLocaleString()}&nbsp;₽</p>
-        <p className={s.article}>арт. 84348945757</p>
-        <div className={s.productControl}>
-          <button className={s.productBtn}>-</button>
-          <p className={s.productCount}>1</p>
-          <button className={s.productBtn}>+</button>
-        </div>
-      </li>
+      {products.map(({ images: [image], name, price, id, article, quantity }) => (
+        <li className={s.product} key={id}>
+          <img className={s.img} src={`${URL_API}${image}`} alt={name} />
+          <h3 className={s.titlePproduct}>{name}</h3>
+          <p className={s.price}>{price.toLocaleString()}&nbsp;₽</p>
+          <p className={s.article}>арт. {article}</p>
+          <div className={s.productControl}>
+            <button className={s.productBtn}>-</button>
+            <p className={s.productCount}>{quantity}</p>
+            <button className={s.productBtn}>+</button>
+          </div>
+        </li>
+      ))}
     </ul>
   );
 };

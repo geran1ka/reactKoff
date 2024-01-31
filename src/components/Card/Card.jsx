@@ -8,6 +8,7 @@ import { Slider } from "../Slider/Slider";
 import { Loading } from "../../UI/Loading/Loading";
 import { Error } from "../../UI/Error/Error";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
+import { AddCartButton } from "../AddPCartButton/AddCartButton";
 
 export const Card = () => {
   const dispatch = useDispatch();
@@ -48,28 +49,8 @@ export const Card = () => {
               </table>
 
               <div className={s.btns}>
-                <button className={s.btn} type="button">
-                  В корзину
-                </button>
+                <AddCartButton className={s.btn} id={data.id} />
                 <FavoriteButton className={[s.like, s.svg]} id={data.id} />
-                {/* <button className={s.like} type="button" id={data.id}>
-                  <svg
-                    className={s.svg}
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      // eslint-disable-next-line max-len
-                      d="M8.4135 13.8733C8.18683 13.9533 7.8135 13.9533 7.58683 13.8733C5.6535 13.2133 1.3335 10.46 1.3335 5.79332C1.3335 3.73332 2.9935 2.06665 5.04016 2.06665C6.2535 2.06665 7.32683 2.65332 8.00016 3.55998C8.6735 2.65332 9.7535 2.06665 10.9602 2.06665C13.0068 2.06665 14.6668 3.73332 14.6668 5.79332C14.6668 10.46 10.3468 13.2133 8.4135 13.8733Z"
-                      // fill="white"
-                      // stroke="#1C1C1C"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button> */}
               </div>
             </div>
           </div>

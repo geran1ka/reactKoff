@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { CartForm } from "../../components/CartForm/CartForm";
 import { CartPlace } from "../../components/CartPlace/CartPlace";
 import { CartProducts } from "../../components/CartProducts/CartProducts";
@@ -5,14 +6,25 @@ import { Container } from "../Container/Container";
 import s from "./Cart.module.scss";
 
 export const Cart = () => {
-  console.log("cart");
-
+  const { products, totalPrice, totalCount } = useSelector((state) => state.cart);
+  console.log("totalCount: ", totalCount);
+  console.log("totalPrice: ", totalPrice);
+  console.log("products: ", products);
+  if (!totalCount) {
+    return (
+      <section className={s.cart}>
+        <Container className={s.container}>
+          <h2 className={s.title}>Корзина пуста</h2>
+        </Container>
+      </section>
+    );
+  }
   return (
     <section className={s.cart}>
       <Container className={s.container}>
         <h2 className={s.title}>Корзина</h2>
-        <CartProducts />
-        <CartPlace />
+        <CartProducts products={products} />
+        <CartPlace totalPrice={totalPrice} totalCount={totalCount} />
         <CartForm />
       </Container>
     </section>
