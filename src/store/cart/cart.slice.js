@@ -137,8 +137,11 @@ const cartSlice = createSlice({
         state.error = null;
       })
       .addCase(addProductToCart.fulfilled, (state, action) => {
-        state.products.push(action.payload.product);
+        console.log("action: ", action);
+        state.products.push({ ...action.payload.product, quantity: action.payload.productCart.quantity });
         state.totalCount = action.payload.totalCount;
+        state.totalPrice = state.products.reduce((acc, item) => item.price * item.quantity + acc, 0);
+
         state.loadingAdd = false;
       })
       .addCase(addProductToCart.rejected, (state, action) => {
@@ -151,6 +154,7 @@ const cartSlice = createSlice({
       .addCase(removeProductFromCart.fulfilled, (state, action) => {
         state.products = state.products.filter((item) => item.id !== action.payload.id);
         state.totalCount = action.payload.totalCount;
+        state.totalPrice = state.products.reduce((acc, item) => item.price * item.quantity + acc, 0);
         state.loadingRemove = false;
       })
       .addCase(removeProductFromCart.rejected, (state, action) => {
@@ -162,7 +166,13 @@ const cartSlice = createSlice({
       })
       .addCase(updateProductInCart.fulfilled, (state, action) => {
         console.log("action: ", action);
-        // state.products.map = action.payload;
+        state.products.map((item) => {
+          if (item.id === action.payload.productCart.productId) {
+            item.quantity = action.payload.productCart.quantity;
+          }
+          return item;
+        });
+        state.totalPrice = state.products.reduce((acc, item) => item.price * item.quantity + acc, 0);
         state.loadingUpdate = false;
         state.error = null;
       })
