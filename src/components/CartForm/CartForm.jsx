@@ -17,11 +17,11 @@ export const CartForm = () => {
       <fieldset className={s.fieldsetRadio}>
         <legend className={s.legend}>Доставка</legend>
         <label className={s.radio}>
-          <input type="radio" className={s.radioInput} name="deliveryType" value="delivery" />
+          <input type="radio" className={s.radioInput} name="deliveryType" value="delivery" required />
           Доставка
         </label>
         <label className={s.radio}>
-          <input type="radio" className={s.radioInput} name="deliveryType" value="pickup" />
+          <input type="radio" className={s.radioInput} name="deliveryType" value="pickup" required />
           Самовывоз
         </label>
       </fieldset>
@@ -29,11 +29,11 @@ export const CartForm = () => {
       <fieldset className={s.fieldsetRadio}>
         <legend className={s.legend}>Оплата</legend>
         <label className={s.radio}>
-          <input type="radio" className={s.radioInput} name="paymentType" value="card" />
+          <input type="radio" className={s.radioInput} name="paymentType" value="card" required />
           Картой при получении
         </label>
         <label className={s.radio}>
-          <input type="radio" className={s.radioInput} name="paymentType" value="cash" />
+          <input type="radio" className={s.radioInput} name="paymentType" value="cash" required />
           Наличными при получении
         </label>
       </fieldset>
